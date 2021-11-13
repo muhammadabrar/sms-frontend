@@ -107,7 +107,7 @@ function Hero() {
                             <li className="nav__menu-item" >
                                 <a>Classes</a>
                             </li><li className="nav__menu-item" >
-                                <a>Stuff</a>
+                                <a>Finance</a>
                             </li>
                         </ul>
                     </nav>

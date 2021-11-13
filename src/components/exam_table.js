@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select';
 import { IoMdPersonAdd } from 'react-icons/io'
 import {BsClipboardData} from 'react-icons/bs'
-import {AiOutlineSchedule} from 'react-icons/ai'
+import {AiOutlineSchedule, AiFillCloseCircle} from 'react-icons/ai'
 import avater from '../cover.jpg';
 function Exams() {
     const theme = useSelector((state) => state.theme.value)
@@ -71,9 +71,12 @@ function Exams() {
                                     </td>
                                     <td>
                                     </td>
-                                    <td>
-                                    <button className={`btn-icon m-1 ${theme && "bg-dark text-light"}  shadow`}  data-toggle="popover"  aria-label="Results" data-cooltipz-dir="bottom"> <BsClipboardData/></button>
-                                    <button className={`btn-icon m-1 ${theme && "bg-dark text-light"}  shadow`}  data-toggle="popover"  aria-label="Schedule" data-cooltipz-dir="bottom"> <AiOutlineSchedule /></button>
+                                    <td className="">
+                                    <button className={`btn-icon float-end  m-1 btn-danger bordered ${theme && "bg-dark text-light"}  shadow`}  data-toggle="popover"  aria-label="Delete" data-cooltipz-dir="bottom"> <AiFillCloseCircle/></button>
+
+                                    <button className={`btn-icon float-end m-1 btn-success bordered ${theme && "bg-dark text-light"}  shadow`}  data-toggle="popover"  aria-label="Results" data-cooltipz-dir="bottom"> <BsClipboardData/></button>
+                                    <button className={`btn-icon float-end btn-info m-1  bordered ${theme && "bg-dark text-light"}  shadow`}  data-toggle="popover"  aria-label="Schedule" data-cooltipz-dir="bottom"> <AiOutlineSchedule /></button>
+
                                     </td>
                                 </tr>
                             )}

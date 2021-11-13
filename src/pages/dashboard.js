@@ -27,9 +27,7 @@ function Dashboard() {
         <div className="row">
               <div className="col-md-6"><Staff /></div>
               <div className="col-md-6"><Exams /></div>
-              <div className="col-md-6"><Students /></div>
-              <div className="col-md-6"><Students /></div>
-
+             
         </div>
         
       </div>

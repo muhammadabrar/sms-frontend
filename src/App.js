@@ -1,5 +1,7 @@
-
 import './App.css';
+// import './bootstrap.min.css';
+import './cooltipz.css';
+
 import  Hero  from './components/hero';
 import  Dashboard  from './pages/dashboard';
 
