@@ -1,16 +1,19 @@
 
 
-
+.top-nav{
+padding-left: 4em;
+padding-right: 4em;
+}
 .jumbotron {
 padding: 1em;
-padding-left: 8em;
-padding-right: 8em;
+padding-left: 4em;
+padding-right: 4em;
 	background: linear-gradient(to bottom,#2980B9,#6DD5FA);
 }
 .jumbotron-dark{
 padding: 1em;
-padding-left: 8em;
-padding-right: 8em;
+padding-left: 4em;
+padding-right: 4em;
 	background: linear-gradient(to bottom,#373B44,#2d5ca8);
 color: rgb(255, 255, 255, 0.8) ;
 }
@@ -26,10 +29,18 @@ color: rgb(255, 255, 255, 0.8) ;
 	margin: 0 0px 0px 10px;
 }
 
+.navLink{
+	text-decoration: none;
+}
+.navLink:hover{
+ font-weight: bold;
+ color: #E2E3E5;
+}
 
 .btn-icon{
 	width: 30px;
 	height: 30px;
+	color: #fff;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -42,9 +53,12 @@ color: rgb(255, 255, 255, 0.8) ;
 }
 .page-content-dark{
 	background-color: #343E59;
+	padding: 2em;
+
 }
 .page-content{
 	background-color: #e2e2e2;
+	padding: 2em;
 }
 
 .label {
@@ -96,6 +110,7 @@ color: rgb(255, 255, 255, 0.8) ;
 /* This is the extracted copied part responsible for showing & hiding the submenu. */
 .nav__submenu {
 	display: none;
+	
 }
 .nav__menu-item:hover .nav__submenu {
 	display: block;
@@ -139,39 +154,52 @@ nav ul {
 .nav__menu-item {
 	display: inline-block;
 	position: relative;
+	text-decoration: none;
+	color: #FFF;
+
 }
 .nav__menu-item:hover {
 	background-color: #00aeef;
+	text-decoration: none;
+	color: #FFF;
+
+
 }
 .active {
 	background-color: #00aeef;
 }
 .nav__menu-item:hover .nav__submenu {
-	display: block;
+	display: gird;
 	z-index: 1;
+	color: #FFF;
 }
 .nav__submenu {
 	font-weight: 300;
 	text-transform: none;
 	display: none;
 	position: absolute;
-	width: 180px;
+	width: 13em;
 	background-color: #00aeef;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.4); 
 	border-left: 1px solid rgba(0, 0, 0, 0.4); 
 	border-right: 1px solid rgba(0, 0, 0, 0.4);  
+	text-decoration: none;
+	color: #fff;
 
 
 }
 .nav__submenu-item:hover {
 	background: rgba(0, 0, 0, 0.1);
-
 }
 .nav__submenu-item {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
-    
+	color: #fff;
+	text-decoration: none;
 }
-
+.nav__submenu-item .item { 
+	color: #fff;
+	text-decoration: none;
+}
 
 .pie-chart{
 	background: #000;

@@ -3,120 +3,141 @@ import Darkmode from './hero/darkmode';
 import Time from './hero/date_time';
 import { useSelector } from 'react-redux'
 
-import {FaPowerOff, FaHandshake} from 'react-icons/fa'
-import {AiFillSetting, AiOutlineHistory} from 'react-icons/ai'
+import { FaPowerOff, FaHandshake } from 'react-icons/fa'
+import { AiFillSetting, AiOutlineHistory, AiOutlineMenu } from 'react-icons/ai'
+import {
+    NavLink
+} from "react-router-dom";
+import { Outlet } from 'react-router';
+import { Navbar, Nav, NavDropdown, Offcanvas, Badge, ListGroup } from 'react-bootstrap'
+import { GrAdd } from 'react-icons/gr'
 
+import { Session } from './setting/session';
+import { AddSession } from './setting/addsession';
+import { Organization } from './setting/organization';
+import Add from './meetings/add';
+import Meetings from './meetings/meetings';
+import History from './meetings/history';
 
 function Hero() {
-
+    const title = useSelector((state) => state.title.value)
     const theme = useSelector((state) => state.theme.value)
+    const [IsMenu, setIsMenu] = useState(false);
+    const [IsSetting, setIsSetting] = useState(false);
+    const [IsSessionEntry, setIsSessionEntry] = useState(false)
+    const [IsMeet, setIsMeet] = useState(false);
+    const [IsHistory, setIsHistory] = useState(false);
 
-    const [current, setcurrent] = useState('mail')
+    const [IsAddMeet, setIsAddMeet] = useState(false);
 
-    const handleClick = e => {
-        setcurrent(e.key);
-    };
+    const CloseHistory = () => setIsHistory(false);
+    const IsHistoryShow = () => setIsHistory(true);
 
-    function closeTab() {
-        window.close();
-    }
+    const CloseMeet = () => setIsMeet(false);
+    const IsMeetShow = () => setIsMeet(true);
+    const CloseSetting = () => setIsSetting(false);
+    const IsSettingShow = () => setIsSetting(true);
 
-    function confirm() {
-        closeTab()
-    }
+    const CloseMenu = () => setIsMenu(false);
+    const IsMenuMenu = () => setIsMenu(true);
+
+    const [Isdropdown, setIsDropdown] = useState(false)
 
     return (
         <>
-            <div className="shadow">
-
-                <div className={!theme ? "jumbotron" : "jumbotron-dark"} >
-                    <div className="row ">
-                        <div className="col-md-6 ">
-                            <h3 className={!theme ? "page-title" : "page-title-dark"}>Welcome</h3>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="d-flex flex-row-reverse">
-                                <div className="nav-btn">
-                                    <button className="btn-icon shadow bg-danger" data-toggle="popover" aria-label="Power off" data-cooltipz-dir="bottom"><FaPowerOff/> </button>
-                                </div>
-                                <div className="nav-btn">
-                                    <button className="btn-icon shadow bg-secondary" data-toggle="popover" aria-label="Settings" data-cooltipz-dir="bottom"><AiFillSetting/> </button>
-                                </div>
-                                <div className="nav-btn">
-                                    <button className="btn-icon shadow bg-info" data-toggle="popover" aria-label="Meetings and appointments" data-cooltipz-dir="bottom"><FaHandshake/></button>
-                                </div>
-                                <div className="nav-btn">
-                                    <button className="btn-icon shadow bg-primary" data-toggle="popover" aria-label="Activities" data-cooltipz-dir="bottom"><AiOutlineHistory/></button>
-                                </div>
-                                <Darkmode />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="">
-                        <div className="row pt-4">
-                            <div className="col-md-4 d-flex justify-content-start">
-                               
-                                    <p className="">
-                                        branch
-                                    </p>
-                                
-                            </div>
-                            <div className="col-md-4 d-flex justify-content-center">
-                               
-                                    <p className=" ">
-                                        2021
-                                    </p>
-                                
-                            </div>
-                            <div className="col-md-4 d-flex justify-content-end">
-                                <p className=" ">
-                                    <Time />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <Navbar className="top-nav fixed-top" bg={!theme ? "light" : "dark"} expand="lg">
                 <>
-                    <nav className="nav">
-                        <ul className="nav__menu">
-                            <li className="nav__menu-item active">
-                                <a>Dashboard</a>
-                            </li>
-                            <li className="nav__menu-item">
-                                <a>Students</a>
-                                <ul className="nav__submenu">
-                                    <li className="nav__submenu-item ">
-                                        <a>Admission</a>
-                                    </li>
-                                    <li className="nav__submenu-item ">
-                                        <a>Withdrawal Students</a>
-                                    </li>
-                                    <li className="nav__submenu-item ">
-                                        <a>Test record</a>
-                                    </li>
-                                    <li className="nav__submenu-item ">
-                                        <a>Attandance</a>
-                                    </li>
-                                   
-                                </ul>
-                                
-                            </li>
-                            <li className="nav__menu-item" >
-                                <a>Staff</a>
-                            </li>
-                            <li className="nav__menu-item" >
-                                <a>Classes</a>
-                            </li><li className="nav__menu-item" >
-                                <a>Finance</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <Navbar.Brand className={!theme ? "text-dark" : "text-white"} >{title}</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto  justify-content-center text-light">
+
+                        </Nav>
+                        <Nav.Link className={!theme ? "text-dark" : "text-white"}><Time /></Nav.Link>
+                        <Darkmode />
+                        <div className="nav-btn">
+                            <button className="btn-icon shadow bg-secondary" onClick={IsSettingShow} data-toggle="popover" aria-label="Settings" data-cooltipz-dir="bottom"><AiFillSetting /> </button>
+                        </div>
+                        <div className="nav-btn">
+                            <button className="btn-icon shadow bg-info" onClick={IsMeetShow} data-toggle="popover" aria-label="Meetings and Appointments" data-cooltipz-dir="bottom"><FaHandshake /></button>
+                        </div>
+                        <div className="nav-btn">
+                            <button className="btn-icon shadow bg-warning" onClick={IsHistoryShow} data-toggle="popover" aria-label="Activities" data-cooltipz-dir="bottom"><AiOutlineHistory /></button>
+                        </div>
+                        <div className="nav-btn">
+                            <button className="btn-icon shadow bg-primary" onClick={IsMenuMenu} data-toggle="popover" aria-label="Menu" data-cooltipz-dir="bottom"><AiOutlineMenu /></button>
+                        </div>
+                    </Navbar.Collapse>
                 </>
-               
+            </Navbar>
+            <Offcanvas placement="end" show={IsMenu} onHide={CloseMenu}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Menu</Offcanvas.Title>
+                    <p ><Badge bg="secondary" data-toggle="popover" aria-label="Session" data-cooltipz-dir="bottom">2021</Badge></p>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
 
-            </div>
+                    <div className="sidenav">
+                        <NavLink to="/"  className={isActive => (isActive ? " navLinkActives" : "navLink")} end>Dashboard</NavLink>
+                        <button className={`dropdown-btn ${Isdropdown && "active"}`} onClick={() => setIsDropdown(!Isdropdown)}>Students
+                            <i className="fa fa-caret-down"></i>
+                        </button>
+                        {Isdropdown && <div className="dropdown-container">
+                            <NavLink to="/" className=" navLink" style={{ textDecoration: "none" }} end>Admission</NavLink>
+                            <NavLink to="/" className=" navLink" end>Withdrawal Students</NavLink>
+                            <NavLink to="/" className="navLink" end>Test record</NavLink>
+                            <NavLink to="/" className="navLink" end>Attandance</NavLink>
+                        </div>}
+                        <NavLink to="/classes" className="navLink" end> Classes</NavLink>
+                        <NavLink to="/studennt" className="navLink" end>Finance</NavLink>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
+
+            <Offcanvas placement="end" show={IsSetting} onHide={CloseSetting}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Setting</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <p className="setting-title">Session <i className="pb-1"
+                        onClick={() => setIsSessionEntry(!IsSessionEntry)}
+                        data-toggle="popover" aria-label="Add new session" data-cooltipz-dir="bottom"><GrAdd /></i>
+                    </p>
+                    {IsSessionEntry && <AddSession />}
+                    <Session />
+                    <p className="setting-title">Organization Setting </p>
+                    <Organization />
+
+                </Offcanvas.Body>
+            </Offcanvas>
 
 
+
+
+            <Offcanvas placement="start" show={IsMeet} onHide={CloseMeet}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Meetings and Appointments  <i className="pb-1"
+                        onClick={() => setIsAddMeet(true)}
+                        data-toggle="popover" aria-label="Add Meetings or Appointments" data-cooltipz-dir="bottom"><GrAdd /></i></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <Meetings IsAddMeet={IsAddMeet} />
+                </Offcanvas.Body>
+            </Offcanvas>
+            <Offcanvas placement="start" show={IsHistory} onHide={CloseHistory}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Activities</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <History />
+                </Offcanvas.Body>
+            </Offcanvas>
+            <Add show={IsAddMeet} onHide={() => setIsAddMeet(false)} />
+
+            <Outlet />
         </>
     );
 }

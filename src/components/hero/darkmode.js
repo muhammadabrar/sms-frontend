@@ -11,8 +11,9 @@ function Darkmode() {
     <>
     <input type="checkbox" onClick={()=> dispatch(mode())} checked={theme} class="checkbox" id="night-mode"/>
     <label for="night-mode" class="label">
+    <BsFillEmojiSunglassesFill className="sun" />
        <BsFillMoonStarsFill className="moon" />
-       <BsFillEmojiSunglassesFill className="sun" />
+       
 
         <div class="blob"></div>
     </label>

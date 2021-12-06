@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select';
+import { BiDetail } from 'react-icons/bi';
+
 import { MdOtherHouses } from 'react-icons/md'
-import avater from '../cover.jpg';
-import { NavLink } from 'react-router-dom';
-function Students() {
+function Classess() {
   const theme = useSelector((state) => state.theme.value)
   const [search, setsearch] = useState()
 
@@ -82,35 +82,15 @@ function Students() {
       setrow(data);
     }
   };
-
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
   return (<>
     <div className={theme ? "card students-chart-card-dark " : "card students-chart-card "} >
       <div className="card-header bg-primary text-light">
-        <div className="row">
-          <div className="col-md-2 pt-3">
-            <p className={theme && "card-title-dark"} style={{ margin: 0 }}>Students</p>
-          </div>
-          <div className="col-md-10">
-            <form className="pt-2">
-              <div className="input-group shadow">
-                <span className={`input-group-text  ${theme && "bg-info text-light"}`}>Search Student</span>
-                <input type="text" onChange={handlesearch} aria-label="First name" placeholder="example(abrar)" className={`form-control shadow-none ${theme && "bg-info text-light"}`} />
-                <select className={`form-control shadow-none ${theme && "bg-info text-light"}`} aria-label="Default select example">
-                  <option selected>5th</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <select className={`form-control shadow-none ${theme && "bg-info text-light"}`} aria-label="Default select example">
-                  <option selected>2021</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </form>
-          </div>
-        </div>
+        
+            <p className={theme && "card-title-dark"} style={{ margin: 0 }}>Classess</p>
+          
 
 
 
@@ -122,39 +102,33 @@ function Students() {
         <div className="table-responsive">
 
           <table className={!theme ? "table table-striped table-hover" : "table-striped table-hover table table-dark"}>
-            <caption>Students of  className 5th & session 2021</caption>
+            <caption>Classess of  className 5th & session 2021</caption>
             <thead className="table-primary">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">name</th>
-                <th scope="col">contacts</th>
-                <th scope="col">Address</th>
-                <th scope="col">grade</th>
-                <th scope="col">status</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Time</th>
+                <th scope="col">Sylubas</th>
               </tr>
             </thead>
             <tbody>
               {row.map((data, index) =>
                 <tr key={index}><td scope="row">{index + 1}</td>
                   <td>
-                    <NavLink className={!theme ? "navLink text-dark": "navLink text-light"} to={`student/${index+1}`}>
-                    <div className="row">
-                      <div className="col-3">
-                        <img src={avater} className="avater" alt="..." />
-                      </div>
-                      <div className="col">
-                        {data.name} <small className="ref-value"> ({data.rollNo})</small><br></br>
-                        <small className="ref-value">{data.Father}</small>
-                      </div>
-                    </div>
-                    </NavLink>
+                  {data.grade}
                   </td>
-                  <td>{data.contact1}<br />
-                      {data.contact2}
+                  <td>urdu
                   </td>
-                  <td>{data.address}</td>
-                  <td>{data.grade}</td>
-                  <td>{data.status}</td>
+                  <td>8:30</td>
+                  <td> <button
+                  class="btn-icon btn-warning shadow"
+                  style={{ marginRight: "1em" }}
+                  data-toggle="popover"
+                  aria-label="Attendance Details"
+                  data-cooltipz-dir="bottom">
+                  <BiDetail />
+                </button></td>
                 </tr>
               )}
             </tbody>
@@ -164,8 +138,15 @@ function Students() {
 
 
     </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+
   </>
   );
 }
 
-export default Students
+export default Classess

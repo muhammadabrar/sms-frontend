@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select';
 import { IoMdPersonAdd } from 'react-icons/io'
 import avater from '../cover.jpg';
+import { NavLink } from 'react-router-dom';
+
 function Staff() {
     const theme = useSelector((state) => state.theme.value)
     const [data, setdata] = useState([
@@ -38,7 +40,7 @@ function Staff() {
     
     return (<>
         <div className={theme ? "card students-chart-card-dark " : "card students-chart-card "} >
-            <div className="card-header">
+            <div className="card-header bg-primary text-light">
                 <div className="row">
                     <div className="col-md-4 pt-3">
                         <p className={theme && "card-title-dark"} style={{ margin: 0 }}>Staff <small>(current Staff)</small></p>
@@ -66,11 +68,15 @@ function Staff() {
                                     <td>
                                         <div className="row">
                                             <div className="col-3">
+                                            <NavLink className={!theme ? "navLink text-dark": "navLink text-light"} to={`staff/${index+1}`}>
                                                 <img src={avater} className="avater" alt="..." />
+                                                </NavLink>
                                             </div>
                                             <div className="col">
+                                                <NavLink className={!theme ? "navLink text-dark": "navLink text-light"} to={`staff/${index+1}`}>
                                                 {data.name} <br></br>
                                                 <small className="ref-value">{data.post}</small>
+                                                </NavLink>
                                             </div>
                                         </div>
                                     </td>

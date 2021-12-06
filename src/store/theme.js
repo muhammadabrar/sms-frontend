@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: false,
+  value: localStorage.getItem('theme'),
 }
 
 export const theme = createSlice({
@@ -11,6 +11,7 @@ export const theme = createSlice({
    
     mode: (state) => {
       state.value = !state.value
+      localStorage.setItem('theme', !state.value);
     },
     // incrementByAmount: (state, action) => {
     //   state.value += action.payload

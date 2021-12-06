@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import Students from '../components/students_table';
 import Staff from '../components/staff_table';
@@ -9,15 +9,21 @@ import Students_pie from '../components/students_pie';
 import Sparkboxes from '../components/sparkbox';
 import { Signup } from '../components/form'
 import Exams from '../components/exam_table';
+import { currentTitle} from '../store/title'
 
 function Dashboard() {
   const theme = useSelector((state) => state.theme.value)
   
+  const dispatch = useDispatch()
+  useEffect(() => {
+    // Update the document title using the browser API
+    dispatch(currentTitle("Dashboard"))
+  }, []);
 
 
   return (<>
-    <div className={!theme ? "page-content" : "page-content-dark"}>
-      <div className="container">
+    <div className={!theme ? "page-content " : "page-content-dark"}>
+      <>
         <Sparkboxes />
         <Students_chart />
         <div className="row">
@@ -30,7 +36,7 @@ function Dashboard() {
              
         </div>
         
-      </div>
+      </>
 
     </div>
   </>
