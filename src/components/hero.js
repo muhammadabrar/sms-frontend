@@ -84,7 +84,7 @@ function Hero() {
                         </button>
                         {Isdropdown && <div className="dropdown-container">
                             <NavLink to="/" className=" navLink" style={{ textDecoration: "none" }} end>Admission</NavLink>
-                            <NavLink to="/" className=" navLink" end>Withdrawal Students</NavLink>
+                            <NavLink to="/Withdrawalstudent" className=" navLink" end>Withdrawal Students</NavLink>
                             <NavLink to="/" className="navLink" end>Test record</NavLink>
                             <NavLink to="/" className="navLink" end>Attandance</NavLink>
                         </div>}

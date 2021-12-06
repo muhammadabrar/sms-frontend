@@ -289,12 +289,15 @@ margin-left: 1em;
     position: relative;
     text-align: center;
     color: white;
+    width: 10em;
+    height: 12em;
+
     /* border: #000 solid 2px; */
   }
   .top-right {
     position: absolute;
     top: 8px;
-    right: 2em;
+    right: 1.5em;
   }
 
 
@@ -347,7 +350,7 @@ margin-left: 1em;
 
   }
   .info-title{
-    width: 8em;
+    width: 12em;
     font-weight: bold;
   }
 .setting-title{
@@ -542,4 +545,15 @@ margin-top: 2em;
 .exam-btn{
   width: 5em;
   margin-bottom: 0.5em;
+}
+
+.std_exam-list{
+  border-radius: 0px;
+height: 100%;
+background: #fff;
+border-right: #a1a2a2 1px solid;
+}
+.std_exam-list-item:hover{
+  background-color: #0D6EFD;
+  color: #fff;
 }

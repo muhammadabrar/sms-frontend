@@ -16,6 +16,7 @@ import {
 import Staffs from './pages/staffs';
 import Classess from './pages/Classes';
 import Student_profile from './pages/student';
+import Withdrawal from './pages/withdrawal';
 function App() {
   return (
   <>
@@ -29,6 +30,8 @@ function App() {
       <Route  path="/" element={<Dashboard />} />
       <Route  path="/staff/:staffid" element={<Staffs />} />
       <Route  path="/student/:studentid" element={<Student_profile />} />
+      <Route  path="/Withdrawalstudent" element={<Withdrawal />} />
+
       <Route   path="/classes" element={<Classess />} />
       <Route  path="/exam/:examid" element={<ExamDetail />} />
 
